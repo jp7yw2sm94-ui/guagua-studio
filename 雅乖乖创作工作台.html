@@ -20,16 +20,16 @@
 <style>
   * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
   :root {
-    --blue: #3b82f6;    --blue-l: #dbeafe;
-    --orange:#f97316;   --orange-l:#ffedd5;
-    --yellow:#facc15;   --yellow-l:#fef9c3;
-    --green: #22c55e;   --green-l: #dcfce7;
-    --pink:  #ec4899;   --pink-l:  #fce7f3;
-    --purple:#8b5cf6;   --purple-l:#ede9fe;
+    --blue: #2563eb;    --blue-l: #dbeafe;    --blue-d: #1e40af;
+    --orange:#f97316;   --orange-l:#ffedd5;   --orange-d:#9a3412;
+    --yellow:#facc15;   --yellow-l:#fef9c3;   --yellow-d:#854d0e;
+    --green: #16a34a;   --green-l: #dcfce7;   --green-d: #15803d;
+    --pink:  #ec4899;   --pink-l:  #fce7f3;   --pink-d:  #9d174d;
+    --purple:#8b5cf6;   --purple-l:#ede9fe;   --purple-d: #5b21b6;
     --cyan:  #06b6d4;
     --gray:  #f3f4f6;   --gray-d: #6b7280;
     --text:  #1f2937;   --white:  #ffffff;
-    --shadow: 0 2px 12px rgba(0,0,0,0.08);
+    --shadow: 0 2px 12px rgba(0,0,0,0.1);
   }
   html,body { height:100%; }
   body {
@@ -68,30 +68,53 @@
   .splash-avatar img { width: 100%; height: 100%; object-fit: cover; }
   .splash-stars {
     position: absolute; top: 90px; right: 50px;
-    font-size: 24px; animation: twinkle 2s infinite;
+    font-size: 28px; animation: twinkle 2s infinite;
   }
   .splash-stars2 {
     position: absolute; top: 180px; left: 45px;
-    font-size: 20px; animation: twinkle 2.5s infinite 0.5s;
+    font-size: 22px; animation: twinkle 2.5s infinite 0.5s;
+  }
+  .splash-stars3 {
+    position: absolute; top: 140px; right: 80px;
+    font-size: 16px; animation: twinkle 3s infinite 1s;
+  }
+  .splash-stars4 {
+    position: absolute; bottom: 200px; left: 40px;
+    font-size: 20px; animation: twinkle 2.8s infinite 0.3s;
+  }
+  .splash-stars5 {
+    position: absolute; bottom: 250px; right: 45px;
+    font-size: 18px; animation: twinkle 2.2s infinite 0.8s;
+  }
+  /* 星星人卡通配饰 */
+  .star-buddy {
+    position: absolute; pointer-events: none;
+    animation: float 4s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%,100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-12px) rotate(5deg); }
   }
   @keyframes twinkle { 0%,100%{opacity:0.4;transform:scale(1);} 50%{opacity:1;transform:scale(1.2);} }
 
   .splash-title {
     font-family: 'Dancing Script', cursive;
-    font-size: 52px; font-weight: 700;
+    font-size: 38px; font-weight: 700;
     color: white; margin-bottom: 4px;
     text-shadow: 0 3px 15px rgba(0,0,0,0.2);
     letter-spacing: 1px;
+    display: flex; align-items: baseline; justify-content: center;
+    gap: 8px;
   }
   .splash-title .name {
     font-family: -apple-system, 'PingFang SC', sans-serif;
-    font-size: 32px; font-weight: 800;
-    display: block; margin-top: 4px;
+    font-size: 38px; font-weight: 800;
   }
   .splash-subtitle {
-    font-size: 20px; color: rgba(255,255,255,0.85);
+    font-size: 20px; color: rgba(255,255,255,0.9);
     font-weight: 600; margin-bottom: 10px;
     letter-spacing: 3px;
+    font-family: 'HYLuoYunXi', 'STKaiti', 'KaiTi', '楷体', -apple-system, sans-serif;
   }
   .splash-believe {
     font-family: 'Dancing Script', cursive;
@@ -162,8 +185,12 @@
     position:relative; overflow:hidden;
   }
   .card::before {
-    content:'✨'; position:absolute; top:8px; right:12px;
-    font-size:18px; opacity:0.15;
+    content:'⭐'; position:absolute; top:8px; right:12px;
+    font-size:16px; opacity:0.2;
+  }
+  .card::after {
+    content:'✨'; position:absolute; bottom:8px; left:12px;
+    font-size:12px; opacity:0.15;
   }
   .card-title {
     font-size:15px; font-weight:700; margin-bottom:12px;
@@ -308,6 +335,26 @@
 <div class="splash" id="splash">
   <div class="splash-stars">✨</div>
   <div class="splash-stars2">⭐</div>
+  <div class="splash-stars3">🌟</div>
+  <div class="splash-stars4">💫</div>
+  <div class="splash-stars5">✨</div>
+
+  <!-- 卡通星星人 -->
+  <svg class="star-buddy" style="top:120px;left:35px;width:36px;height:36px" viewBox="0 0 100 100">
+    <path d="M50 10 L60 40 L90 40 L66 58 L76 88 L50 70 L24 88 L34 58 L10 40 L40 40 Z" fill="#facc15" stroke="white" stroke-width="3"/>
+    <circle cx="42" cy="48" r="3" fill="#1f2937"/><circle cx="58" cy="48" r="3" fill="#1f2937"/>
+    <path d="M42 58 Q50 64 58 58" stroke="#1f2937" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  </svg>
+  <svg class="star-buddy" style="top:200px;right:40px;width:30px;height:30px;animation-delay:1s" viewBox="0 0 100 100">
+    <path d="M50 10 L60 40 L90 40 L66 58 L76 88 L50 70 L24 88 L34 58 L10 40 L40 40 Z" fill="#ec4899" stroke="white" stroke-width="3"/>
+    <circle cx="42" cy="48" r="3" fill="white"/><circle cx="58" cy="48" r="3" fill="white"/>
+    <path d="M42 58 Q50 64 58 58" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  </svg>
+  <svg class="star-buddy" style="bottom:180px;left:50px;width:28px;height:28px;animation-delay:2s" viewBox="0 0 100 100">
+    <path d="M50 10 L60 40 L90 40 L66 58 L76 88 L50 70 L24 88 L34 58 L10 40 L40 40 Z" fill="#22c55e" stroke="white" stroke-width="3"/>
+    <circle cx="42" cy="48" r="3" fill="#1f2937"/><circle cx="58" cy="48" r="3" fill="#1f2937"/>
+    <path d="M42 58 Q50 64 58 58" stroke="#1f2937" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  </svg>
 
   <div class="splash-date" id="splashDate">7月29日 周三</div>
 
@@ -759,33 +806,81 @@ function genInspo() {
 // ===== Hot Videos Auto Fetch =====
 function fetchHotFromAPI() {
   showToast('正在抓取热点...');
-  const url = 'https://api-hot.imsyy.top/douyin';
-  fetch(url)
-    .then(r => { if(!r.ok) throw new Error(); return r.json(); })
-    .then(d => {
-      if(d.data && d.data.length > 0) {
-        const item = d.data[0];
-        const title = item.title || '抖音热门';
-        const hot = item.hot || '';
-        const items = state.hot || [];
-        const newId = items.length > 0 ? Math.max(...items.map(x=>x.id)) + 1 : 1;
-        items.unshift({ id:newId, title, cat:'其他', likes:hot, idea:'自动抓取：结合英语/绘画/书法风格二次改编', link:item.url||'', date:todayStr() });
-        state.hot = items;
-        saveData();
-        renderHot();
-        showToast('热点抓取成功 ✓');
-      } else { showToast('暂无新热点'); }
-    })
-    .catch(() => {
-      // Fallback: add a trending placeholder
-      showToast('网络热点获取失败，已添加推荐内容');
-      const items = state.hot || [];
-      const newId = items.length > 0 ? Math.max(...items.map(x=>x.id)) + 1 : 1;
-      items.unshift({ id:newId, title:'今日热门推荐：用手写体做短视频标题', cat:'书法', likes:'10w+', idea:'用瘦金体/钢笔字写热门标题，做封面或开场', link:'', date:todayStr() });
-      state.hot = items;
-      saveData();
-      renderHot();
+  // 多个免费热点API轮询
+  const apis = [
+    {url:'https://api-hot.imsyy.top/douyin', path:'data'},
+    {url:'https://api.vvhan.com/api/hotlist/douyinHot', path:'data'},
+    {url:'https://tenapi.cn/v2/douyinhot', path:'data'},
+  ];
+
+  let apiIndex = 0;
+  function tryFetch() {
+    if (apiIndex >= apis.length) {
+      // 所有API都失败，用内置推荐
+      addFallbackHot();
+      return;
+    }
+    const api = apis[apiIndex];
+    fetch(api.url, { mode:'cors', timeout:8000 })
+      .then(r => { if(!r.ok) throw new Error(); return r.json(); })
+      .then(d => {
+        const list = d[api.path] || d.data || d;
+        if (Array.isArray(list) && list.length > 0) {
+          const top = list.slice(0, 3);
+          top.forEach((item, i) => {
+            const title = item.title || item.name || item.word || '热门视频';
+            const hot = item.hot || item.play || item.heat || '';
+            const link = item.url || item.link || item.mobile_url || '';
+            const items = state.hot || [];
+            const newId = items.length > 0 ? Math.max(...items.map(x=>x.id)) + 1 : 1;
+            items.unshift({
+              id:newId + i,
+              title,
+              cat: i===0 ? '书法' : (i===1 ? '绘画' : '英语'),
+              likes: hot ? (hot > 10000 ? (hot/10000).toFixed(1)+'w' : hot) : '热门',
+              idea: '自动抓取：结合你的风格（瘦金体/绘画/英语）二次改编',
+              link,
+              date: todayStr()
+            });
+            state.hot = items;
+          });
+          saveData();
+          renderHot();
+          showToast('抓取到 ' + top.length + ' 条热点 ✓');
+        } else {
+          apiIndex++;
+          tryFetch();
+        }
+      })
+      .catch(() => { apiIndex++; tryFetch(); });
+  }
+  tryFetch();
+}
+
+function addFallbackHot() {
+  // 内置推荐热点
+  const fallback = [
+    {title:'今日热门：手写字体视频爆火，播放量破百万', cat:'书法', idea:'用瘦金体钢笔写热门文案/歌词，做15秒短视频'},
+    {title:'绘画过程类视频持续走高，Procreate教程需求大', cat:'绘画', idea:'录一个Procreate绘画过程+配音讲解，发抖音'},
+    {title:'英语学习类内容近期热度上升，口语教学受欢迎', cat:'英语', idea:'用影子跟读法录一段英语口语教学，配瘦金体字幕'},
+  ];
+  fallback.forEach((f, i) => {
+    const items = state.hot || [];
+    const newId = items.length > 0 ? Math.max(...items.map(x=>x.id)) + 1 : 1;
+    items.unshift({
+      id: newId + i,
+      title: f.title,
+      cat: f.cat,
+      likes: '推荐',
+      idea: f.idea,
+      link: '',
+      date: todayStr()
     });
+    state.hot = items;
+  });
+  saveData();
+  renderHot();
+  showToast('已添加今日推荐热点 ✓');
 }
 
 // ===== Tasks =====
