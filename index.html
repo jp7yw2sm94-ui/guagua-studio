@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>乖乖创作工作台</title>
+
+<!-- PWA 配置：让浏览器识别为独立App -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="乖乖工作台">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#7c3aed">
+<meta name="application-name" content="乖乖工作台">
+
+<!-- App图标 -->
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='180'%20height='180'%20viewBox='0%200%20180%20180'%3E%3Cdefs%3E%3ClinearGradient%20id='g'%20x1='0'%20y1='0'%20x2='1'%20y2='1'%3E%3Cstop%20offset='0'%20stop-color='%237c3aed'/%3E%3Cstop%20offset='1'%20stop-color='%23db2777'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width='180'%20height='180'%20rx='40'%20fill='url(%23g)'/%3E%3Ctext%20x='90'%20y='125'%20font-size='100'%20text-anchor='middle'%20fill='white'%3E%E2%9C%92%EF%B8%8F%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='180'%20height='180'%20viewBox='0%200%20180%20180'%3E%3Cdefs%3E%3ClinearGradient%20id='g'%20x1='0'%20y1='0'%20x2='1'%20y2='1'%3E%3Cstop%20offset='0'%20stop-color='%237c3aed'/%3E%3Cstop%20offset='1'%20stop-color='%23db2777'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width='180'%20height='180'%20rx='40'%20fill='url(%23g)'/%3E%3Ctext%20x='90'%20y='125'%20font-size='100'%20text-anchor='middle'%20fill='white'%3E%E2%9C%92%EF%B8%8F%3C/text%3E%3C/svg%3E">
+
+<!-- PWA Manifest -->
+<link rel="manifest" href="data:application/json,%7B%22name%22%3A%22%E4%B9%96%E4%B9%96%E5%88%9B%E4%BD%9C%E5%B7%A5%E4%BD%9C%E5%8F%B0%22%2C%22short_name%22%3A%22%E4%B9%96%E4%B9%96%E5%B7%A5%E4%BD%9C%E5%8F%B0%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23f3f4f6%22%2C%22theme_color%22%3A%22%237c3aed%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%2C%253Csvg%2520xmlns%253D%2527http%253A%252F%252Fwww.w3.org%252F2000%252Fsvg%2527%2520width%253D%2527512%2527%2520height%253D%2527512%2527%2520viewBox%253D%25270%25200%2520512%2520512%2527%253E%253Cdefs%253E%253ClinearGradient%2520id%253D%2527g%2527%2520x1%253D%25270%2527%2520y1%253D%25270%2527%2520x2%253D%25271%2527%2520y2%253D%25271%2527%253E%253Cstop%2520offset%253D%25270%2527%2520stop-color%253D%2527%25237c3aed%2527%252F%253E%253Cstop%2520offset%253D%25271%2527%2520stop-color%253D%2527%2523db2777%2527%252F%253E%253C%252FlinearGradient%253E%253C%252Fdefs%253E%253Crect%2520width%253D%2527512%2527%2520height%253D%2527512%2527%2520rx%253D%2527112%2527%2520fill%253D%2527url%2528%2523g%2529%2527%252F%253E%253Ctext%2520x%253D%2527256%2527%2520y%253D%2527360%2527%2520font-size%253D%2527280%2527%2520text-anchor%253D%2527middle%2527%2520fill%253D%2527white%2527%253E%25E2%259C%2592%25EF%25B8%258F%253C%252Ftext%253E%253C%252Fsvg%253E%22%2C%22sizes%22%3A%22512x512%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%7D%5D%7D">
+
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  :root {
+    --blue: #2563eb;    --blue-l: #dbeafe;   --blue-d: #1e40af;
+    --orange:#ea580c;   --orange-l:#fed7aa;  --orange-d:#9a3412;
+    --yellow:#eab308;   --yellow-l:#fef3c7;  --yellow-d:#854d0e;
+    --green: #16a34a;   --green-l: #dcfce7;  --green-d: #15803d;
+    --pink:  #db2777;   --pink-l:  #fce7f3;  --pink-d:  #9d174d;
+    --purple:#7c3aed;   --purple-l:#ede9fe;  --purple-d:#5b21b6;
+    --gray:  #f3f4f6;   --gray-d: #6b7280;   --text:    #1f2937;
+    --white: #ffffff;
+    --shadow: 0 2px 12px rgba(0,0,0,0.08);
+    --shadow-lg: 0 4px 20px rgba(0,0,0,0.12);
+  }
+  html, body { height:100%; overflow:hidden; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+    background: var(--gray);
+    color: var(--text);
+    line-height: 1.6;
+    display: flex;
+  }
+
+  /* ===== Sidebar ===== */
+  .sidebar {
+    width: 200px;
+    background: linear-gradient(180deg, #1e1b4b 0%, #312e81 50%, #4c1d95 100%);
+    color: white;
+    height: 100vh;
+    overflow-y: auto;
+    transition: transform 0.3s ease;
+    z-index: 200;
+    flex-shrink: 0;
+    position: fixed;
+    left: 0; top: 0;
+  }
+  .sidebar.hide { transform: translateX(-100%); }
+
+  .sidebar-header {
+    padding: 20px 16px 16px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .sidebar-header .avatar {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--pink), var(--purple));
+    margin: 0 auto 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px;
+  }
+  .sidebar-header .name { font-size: 16px; font-weight: 700; }
+  .sidebar-header .desc { font-size: 11px; opacity: 0.6; margin-top: 2px; }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.65);
+    cursor: pointer;
+    transition: all 0.2s;
+    border-left: 3px solid transparent;
+  }
+  .nav-item:active { background: rgba(255,255,255,0.05); }
+  .nav-item .nav-icon { font-size: 18px; width: 24px; text-align: center; }
+  .nav-item.active {
+    color: white;
+    background: rgba(255,255,255,0.08);
+    border-left-color: var(--yellow);
+  }
+  .nav-item.active.en { border-left-color: var(--blue); }
+  .nav-item.active.draw { border-left-color: var(--orange); }
+  .nav-item.active.calli { border-left-color: #8b5cf6; }
+  .nav-item.active.fit { border-left-color: var(--green); }
+  .nav-item.active.craft { border-left-color: #f59e0b; }
+  .nav-item.active.hot { border-left-color: var(--pink); }
+  .nav-item.active.review { border-left-color: var(--purple); }
+  .nav-item.active.inspo { border-left-color: var(--yellow); }
+
+  /* Mobile menu toggle */
+  .menu-toggle {
+    display: none;
+    position: fixed;
+    top: 14px; left: 14px;
+    z-index: 300;
+    background: rgba(30,27,75,0.9);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    width: 40px; height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  .sidebar-overlay {
+    display: none;
+    position: fixed; top:0; left:0; right:0; bottom:0;
+    background: rgba(0,0,0,0.4);
+    z-index: 150;
+  }
+  .sidebar-overlay.show { display: block; }
+
+  /* ===== Main Content ===== */
+  .main {
+    flex: 1;
+    height: 100vh;
+    overflow-y: auto;
+    margin-left: 200px;
+    transition: margin-left 0.3s ease;
+  }
+  .main.full { margin-left: 0; }
+
+  .page {
+    display: none;
+    padding: 16px;
+    padding-top: 60px;
+    min-height: 100%;
+  }
+  .page.active { display: block; }
+
+  .page-header {
+    margin-bottom: 16px;
+  }
+  .page-header h1 {
+    font-size: 22px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .page-header .sub {
+    font-size: 13px;
+    color: var(--gray-d);
+    margin-top: 4px;
+  }
+
+  /* ===== Cards ===== */
+  .card {
+    background: white;
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: var(--shadow);
+    margin-bottom: 14px;
+  }
+  .card-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* ===== Daily Quote ===== */
+  .quote-bar {
+    background: linear-gradient(135deg, #4c1d95, #7c3aed);
+    color: white;
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 14px;
+    box-shadow: var(--shadow-lg);
+  }
+  .quote-bar .quote-text {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.7;
+  }
+  .quote-bar .quote-date {
+    font-size: 12px;
+    opacity: 0.7;
+    margin-top: 6px;
+  }
+
+  /* ===== Check-in ===== */
+  .checkin-section {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+  .checkin-card {
+    flex: 1;
+    border-radius: 14px;
+    padding: 14px 8px;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.15s;
+  }
+  .checkin-card:active { transform: scale(0.95); }
+  .checkin-card .ci-icon { font-size: 24px; }
+  .checkin-card .ci-label { font-size: 12px; font-weight: 600; margin-top: 4px; }
+  .checkin-card .ci-streak { font-size: 11px; opacity: 0.85; margin-top: 2px; }
+  .checkin-card.en { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+  .checkin-card.draw { background: linear-gradient(135deg, #f97316, #ea580c); }
+  .checkin-card.calli { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
+  .checkin-card.fit { background: linear-gradient(135deg, #22c55e, #16a34a); }
+  .checkin-card.checked { opacity: 0.5; }
+  .checkin-card.checked .ci-streak::after { content: ' ✓'; }
+
+  /* ===== Task List ===== */
+  .task-row {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #f3f4f6;
+  }
+  .task-row:last-child { border-bottom: none; }
+  .task-check {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    border: 2px solid #d1d5db;
+    margin-right: 12px;
+    cursor: pointer;
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+    color: transparent;
+    transition: all 0.2s;
+  }
+  .task-check.checked { background: var(--green); border-color: var(--green); color: white; }
+  .task-info { flex: 1; }
+  .task-name { font-size: 14px; font-weight: 600; }
+  .task-name.done { text-decoration: line-through; color: var(--gray-d); }
+  .task-note { font-size: 12px; color: var(--gray-d); }
+  .task-del { color: #d1d5db; cursor: pointer; padding: 4px 8px; font-size: 16px; }
+
+  .add-task-inline {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .add-task-inline input {
+    flex: 1;
+    padding: 10px 14px;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 10px;
+    font-size: 14px;
+    outline: none;
+  }
+  .add-task-inline input:focus { border-color: var(--purple); }
+  .add-task-inline button {
+    background: var(--purple);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 0 16px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  /* ===== Week Calendar ===== */
+  .week-cal {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 14px;
+  }
+  .week-day {
+    flex: 1;
+    text-align: center;
+    padding: 8px 2px;
+    border-radius: 10px;
+    border: 2px solid #f3f4f6;
+    font-size: 11px;
+  }
+  .week-day .wd-week { color: var(--gray-d); font-size: 10px; }
+  .week-day .wd-num { font-size: 16px; font-weight: 700; margin: 2px 0; }
+  .week-day .wd-dot { height: 14px; font-size: 12px; }
+  .week-day.today { border-color: currentColor; }
+  .week-day.checked { background: currentColor; }
+
+  /* ===== Hot Video Card ===== */
+  .hot-card {
+    background: white;
+    border-radius: 14px;
+    padding: 14px;
+    box-shadow: var(--shadow);
+    margin-bottom: 12px;
+    border-left: 4px solid var(--pink);
+  }
+  .hot-card .hot-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+  }
+  .hot-card .hot-title { font-size: 14px; font-weight: 700; flex: 1; }
+  .hot-card .hot-tag {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    background: var(--pink-l);
+    color: var(--pink-d);
+    font-weight: 600;
+    white-space: nowrap;
+    margin-left: 8px;
+  }
+  .hot-card .hot-data {
+    display: flex;
+    gap: 12px;
+    font-size: 12px;
+    color: var(--gray-d);
+    margin-bottom: 8px;
+  }
+  .hot-card .hot-data span { font-weight: 600; }
+  .hot-card .hot-idea {
+    background: var(--yellow-l);
+    border-radius: 10px;
+    padding: 8px 10px;
+    font-size: 13px;
+    color: var(--yellow-d);
+    line-height: 1.6;
+  }
+  .hot-card .hot-link {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 12px;
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .hot-del { color: #d1d5db; cursor: pointer; font-size: 15px; padding: 2px; }
+
+  /* Quick Links */
+  .quick-links {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+  .quick-link {
+    background: white;
+    border-radius: 12px;
+    padding: 10px 14px;
+    box-shadow: var(--shadow);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .quick-link:active { opacity: 0.7; }
+
+  /* ===== Review Card ===== */
+  .review-card {
+    background: white;
+    border-radius: 14px;
+    padding: 14px;
+    box-shadow: var(--shadow);
+    margin-bottom: 12px;
+    border-left: 4px solid var(--purple);
+  }
+  .review-card .rv-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  .review-card .rv-title { font-size: 14px; font-weight: 700; }
+  .review-card .rv-date { font-size: 12px; color: var(--gray-d); }
+  .review-card .rv-platform {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    background: var(--purple-l);
+    color: var(--purple-d);
+    font-weight: 600;
+  }
+  .review-metrics {
+    display: flex;
+    gap: 8px;
+    margin: 10px 0;
+  }
+  .metric-box {
+    flex: 1;
+    text-align: center;
+    background: var(--gray);
+    border-radius: 10px;
+    padding: 8px 4px;
+  }
+  .metric-box .m-val { font-size: 15px; font-weight: 700; }
+  .metric-box .m-label { font-size: 10px; color: var(--gray-d); }
+  .review-section {
+    margin-top: 8px;
+  }
+  .review-section .rs-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--gray-d);
+    margin-bottom: 4px;
+  }
+  .review-section .rs-content {
+    font-size: 13px;
+    line-height: 1.7;
+    padding: 8px 10px;
+    border-radius: 8px;
+  }
+  .rs-content.good { background: var(--green-l); color: var(--green-d); }
+  .rs-content.bad { background: #fef2f2; color: #991b1b; }
+  .rs-content.tip { background: var(--yellow-l); color: var(--yellow-d); }
+  .rs-content.ab { background: var(--blue-l); color: var(--blue-d); }
+
+  /* ===== Inspiration ===== */
+  .inspo-card {
+    background: white;
+    border-radius: 14px;
+    padding: 14px;
+    box-shadow: var(--shadow);
+    margin-bottom: 12px;
+    border-left: 4px solid var(--yellow);
+  }
+  .inspo-card .ic-cat {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    background: var(--yellow-l);
+    color: var(--yellow-d);
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 6px;
+  }
+  .inspo-card .ic-title { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+  .inspo-card .ic-content { font-size: 13px; color: var(--gray-d); line-height: 1.7; }
+  .inspo-card .ic-date { font-size: 11px; color: #d1d5db; margin-top: 6px; }
+
+  /* ===== Forms ===== */
+  .form-group { margin-bottom: 10px; }
+  .form-group label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--gray-d);
+    display: block;
+    margin-bottom: 4px;
+  }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 10px;
+    font-size: 14px;
+    outline: none;
+    font-family: inherit;
+    resize: none;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: var(--purple);
+  }
+  .form-row { display: flex; gap: 8px; }
+  .form-row .form-group { flex: 1; }
+  .btn-submit {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 700;
+    color: white;
+    cursor: pointer;
+    background: linear-gradient(135deg, var(--purple), var(--pink));
+  }
+  .btn-submit:active { opacity: 0.85; }
+
+  /* ===== Modal ===== */
+  .modal-overlay {
+    display: none;
+    position: fixed; top:0; left:0; right:0; bottom:0;
+    background: rgba(0,0,0,0.5);
+    z-index: 400;
+    justify-content: center;
+    align-items: flex-end;
+  }
+  .modal-overlay.show { display: flex; }
+  .modal {
+    background: white;
+    border-radius: 20px 20px 0 0;
+    width: 100%;
+    max-width: 500px;
+    padding: 20px 16px 28px;
+    max-height: 85vh;
+    overflow-y: auto;
+    animation: slideUp 0.3s;
+  }
+  @keyframes slideUp { from{transform:translateY(100%);} to{transform:translateY(0);} }
+  .modal h3 { font-size: 17px; margin-bottom: 14px; text-align: center; }
+  .modal-btns { display: flex; gap: 10px; margin-top: 10px; }
+  .modal-btns button {
+    flex: 1; padding: 12px; border: none; border-radius: 12px;
+    font-size: 15px; font-weight: 600; cursor: pointer;
+  }
+  .btn-cancel { background: #f3f4f6; color: var(--gray-d); }
+  .btn-confirm { background: var(--purple); color: white; }
+
+  /* ===== Toast ===== */
+  .toast {
+    position: fixed; bottom: 30px; left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.8);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 14px;
+    z-index: 500;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+  }
+  .toast.show { opacity: 1; }
+
+  .empty {
+    text-align: center;
+    padding: 40px 16px;
+    color: #d1d5db;
+    font-size: 14px;
+  }
+
+  /* Scrollbar */
+  .sidebar::-webkit-scrollbar { width: 4px; }
+  .sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 2px; }
+
+  /* Responsive: mobile */
+  @media (max-width: 768px) {
+    .menu-toggle { display: flex; align-items: center; justify-content: center; }
+    .sidebar { transform: translateX(-100%); }
+    .sidebar.show { transform: translateX(0); }
+    .main { margin-left: 0; }
+    .page { padding-top: 60px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Menu Toggle (mobile) -->
+<button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+<!-- ===== Sidebar ===== -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <div class="avatar">🎨</div>
+    <div class="name">乖乖</div>
+    <div class="desc">多领域内容创作者</div>
+  </div>
+  <div class="nav-item active en" data-page="english" onclick="switchPage('english', 'en')">
+    <span class="nav-icon">🔤</span> 英语学习
+  </div>
+  <div class="nav-item draw" data-page="drawing" onclick="switchPage('drawing','draw')">
+    <span class="nav-icon">🎨</span> 绘画 Procreate
+  </div>
+  <div class="nav-item calli" data-page="calligraphy" onclick="switchPage('calligraphy','calli')">
+    <span class="nav-icon">✒️</span> 书法学习
+  </div>
+  <div class="nav-item hot" data-page="hot" onclick="switchPage('hot','hot')">
+    <span class="nav-icon">🔥</span> 抖音热点
+  </div>
+  <div class="nav-item review" data-page="review" onclick="switchPage('review','review')">
+    <span class="nav-icon">📊</span> 内容复盘
+  </div>
+  <div class="nav-item inspo" data-page="inspo" onclick="switchPage('inspo','inspo')">
+    <span class="nav-icon">💡</span> 每日灵感
+  </div>
+</div>
+
+<!-- ===== Main ===== -->
+<div class="main" id="main">
+
+<!-- ===== 英语学习 ===== -->
+<div class="page active" id="page-english">
+  <div class="page-header">
+    <h1>🔤 英语学习</h1>
+    <div class="sub">每日积累，量变到质变</div>
+  </div>
+
+  <div class="quote-bar">
+    <div class="quote-text" id="quote-en"></div>
+    <div class="quote-date" id="quote-en-date"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📋 本周打卡 <span style="font-size:12px;color:var(--gray-d);font-weight:400" id="streak-en-text">连续 0 天</span></div>
+    <div class="week-cal" id="cal-en" style="color:var(--blue)"></div>
+    <button class="btn-submit" style="background:linear-gradient(135deg,#3b82f6,#2563eb)" id="checkin-en-btn" onclick="doCheckin('en')">今日打卡</button>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📝 今日学习任务</div>
+    <div id="tasks-en"></div>
+    <div class="add-task-inline">
+      <input type="text" id="add-en-input" placeholder="新增任务，如：背单词30个" onkeydown="if(event.key==='Enter')addTask('en')">
+      <button onclick="addTask('en')">+</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📖 学习笔记</div>
+    <div id="notes-en"></div>
+    <div class="add-task-inline">
+      <input type="text" id="note-en-input" placeholder="记一条笔记..." onkeydown="if(event.key==='Enter')addNote('en')">
+      <button onclick="addNote('en')">+</button>
+    </div>
+  </div>
+
+  <div class="card" style="border-left:4px solid var(--blue)">
+    <div class="card-title">📐 语法讲解</div>
+    <div id="grammar-en"></div>
+  </div>
+</div>
+
+<!-- ===== 绘画 Procreate ===== -->
+<div class="page" id="page-drawing">
+  <div class="page-header">
+    <h1>🎨 绘画 Procreate</h1>
+    <div class="sub">每日一画，持续精进</div>
+  </div>
+
+  <div class="quote-bar" style="background:linear-gradient(135deg,#ea580c,#f97316)">
+    <div class="quote-text" id="quote-draw"></div>
+    <div class="quote-date" id="quote-draw-date"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📋 本周打卡 <span style="font-size:12px;color:var(--gray-d);font-weight:400" id="streak-draw-text">连续 0 天</span></div>
+    <div class="week-cal" id="cal-draw" style="color:var(--orange)"></div>
+    <button class="btn-submit" style="background:linear-gradient(135deg,#f97316,#ea580c)" id="checkin-draw-btn" onclick="doCheckin('draw')">今日打卡</button>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🎨 绘画任务</div>
+    <div id="tasks-draw"></div>
+    <div class="add-task-inline">
+      <input type="text" id="add-draw-input" placeholder="新增任务，如：临摹一幅风景" onkeydown="if(event.key==='Enter')addTask('draw')">
+      <button onclick="addTask('draw')">+</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🖌️ Procreate 技巧笔记</div>
+    <div id="notes-draw"></div>
+    <div class="add-task-inline">
+      <input type="text" id="note-draw-input" placeholder="记一条技巧..." onkeydown="if(event.key==='Enter')addNote('draw')">
+      <button onclick="addNote('draw')">+</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 书法学习 ===== -->
+<div class="page" id="page-calligraphy">
+  <div class="page-header">
+    <h1>✒️ 书法学习</h1>
+    <div class="sub">瘦金体钢笔专项 · 铁画银钩</div>
+  </div>
+
+  <div class="quote-bar" style="background:linear-gradient(135deg,#6d28d9,#8b5cf6)">
+    <div class="quote-text" id="quote-calli"></div>
+    <div class="quote-date" id="quote-calli-date"></div>
+  </div>
+
+  <div class="card" style="border-left:4px solid #8b5cf6">
+    <div class="card-title">✒️ 瘦金体钢笔练习</div>
+    <div id="tasks-calli-thin"></div>
+    <div class="add-task-inline">
+      <input type="text" id="add-calli-thin-input" placeholder="新增练习任务..." onkeydown="if(event.key==='Enter')addTask('calli-thin')">
+      <button onclick="addTask('calli-thin')">+</button>
+    </div>
+  </div>
+
+  <div class="card" style="border-left:4px solid #7c3aed">
+    <div class="card-title">📺 瘦金体钢笔教程视频</div>
+    <div style="font-size:13px;color:var(--gray-d);margin-bottom:10px">收录优质的瘦金体钢笔教程视频，随时学习参考</div>
+    <div id="videos-calli"></div>
+    <div class="form-group" style="margin-top:10px">
+      <input type="text" id="video-calli-title" placeholder="教程标题（如：瘦金体基本笔画入门教程）">
+    </div>
+    <div class="form-group">
+      <input type="text" id="video-calli-link" placeholder="视频链接（B站/抖音/小红书等）">
+    </div>
+    <div class="form-group">
+      <input type="text" id="video-calli-note" placeholder="教程要点/来源（选填）">
+    </div>
+    <button class="btn-submit" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed)" onclick="addVideo('calli')">+ 收录教程</button>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📜 书法笔记</div>
+    <div id="notes-calli"></div>
+    <div class="add-task-inline">
+      <input type="text" id="note-calli-input" placeholder="记一条心得..." onkeydown="if(event.key==='Enter')addNote('calli')">
+      <button onclick="addNote('calli')">+</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 抖音热点 ===== -->
+<div class="page" id="page-hot">
+  <div class="page-header">
+    <h1>🔥 抖音热点追踪</h1>
+    <div class="sub">发现爆款 → 分析规律 → 二次改编</div>
+  </div>
+
+  <div class="card" style="background:linear-gradient(135deg,#db2777,#be185d);color:white">
+    <div style="font-size:14px;font-weight:700;margin-bottom:10px">⚡ 快捷入口</div>
+    <div class="quick-links" style="margin-bottom:0">
+      <a class="quick-link" style="background:rgba(255,255,255,0.15);color:white" href="https://www.douyin.com/hot" target="_blank">📱 抖音热榜</a>
+      <a class="quick-link" style="background:rgba(255,255,255,0.15);color:white" href="https://www.douyin.com/discover" target="_blank">🔍 发现页</a>
+      <a class="quick-link" style="background:rgba(255,255,255,0.15);color:white" href="https://trends.so.com/" target="_blank">📊 微信指数</a>
+      <a class="quick-link" style="background:rgba(255,255,255,0.15);color:white" href="https://www.feigua.cn/" target="_blank">📈 飞瓜数据</a>
+      <a class="quick-link" style="background:rgba(255,255,255,0.15);color:white" href="https://www.chanmama.com/" target="_blank">🔍 蝉妈妈</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📥 录入爆款视频</div>
+    <div class="form-group">
+      <label>视频标题/描述</label>
+      <input type="text" id="hot-title" placeholder="爆款视频标题">
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>分类标签</label>
+        <select id="hot-cat">
+          <option value="英语">英语</option>
+          <option value="绘画">绘画</option>
+          <option value="书法">书法</option>
+          <option value="其他">其他</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>点赞数</label>
+        <input type="text" id="hot-likes" placeholder="如 10w">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>改编思路（如何二次创作）</label>
+      <textarea id="hot-idea" rows="2" placeholder="我的改编方向：..."></textarea>
+    </div>
+    <div class="form-group">
+      <label>视频链接（选填）</label>
+      <input type="text" id="hot-link" placeholder="https://...">
+    </div>
+    <button class="btn-submit" style="background:linear-gradient(135deg,#db2777,#be185d)" onclick="addHot()">录入爆款</button>
+  </div>
+
+  <div class="card-title" style="margin-bottom:10px">🗂️ 已收录爆款</div>
+  <div id="hot-list"></div>
+</div>
+
+<!-- ===== 内容复盘 ===== -->
+<div class="page" id="page-review">
+  <div class="page-header">
+    <h1>📊 内容复盘</h1>
+    <div class="sub">数据追踪 → 要素拆解 → 优化建议 → A/B对比</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📝 新增复盘记录</div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>内容标题</label>
+        <input type="text" id="rv-title" placeholder="发布的视频标题">
+      </div>
+      <div class="form-group">
+        <label>平台</label>
+        <select id="rv-platform">
+          <option value="抖音">抖音</option>
+          <option value="小红书">小红书</option>
+          <option value="B站">B站</option>
+          <option value="视频号">视频号</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label>播放量</label><input type="number" id="rv-views" placeholder="0"></div>
+      <div class="form-group"><label>点赞</label><input type="number" id="rv-likes" placeholder="0"></div>
+      <div class="form-group"><label>评论</label><input type="number" id="rv-comments" placeholder="0"></div>
+      <div class="form-group"><label>转发</label><input type="number" id="rv-shares" placeholder="0"></div>
+    </div>
+    <div class="form-group">
+      <label>✅ 做得好的地方</label>
+      <textarea id="rv-good" rows="2" placeholder="开头3秒抓人、封面好看..."></textarea>
+    </div>
+    <div class="form-group">
+      <label>❌ 需要改进</label>
+      <textarea id="rv-bad" rows="2" placeholder="中段节奏拖沓、BGM不合..."></textarea>
+    </div>
+    <div class="form-group">
+      <label>💡 下次优化建议</label>
+      <textarea id="rv-tip" rows="2" placeholder="下次尝试..."></textarea>
+    </div>
+    <div class="form-group">
+      <label>🅰️/🅱️ 对比实验（选填）</label>
+      <input type="text" id="rv-ab" placeholder="如：A标题 vs B标题，A效果更好">
+    </div>
+    <button class="btn-submit" style="background:linear-gradient(135deg,#7c3aed,#5b21b6)" onclick="addReview()">保存复盘</button>
+  </div>
+
+  <div class="card-title" style="margin-bottom:10px">📋 复盘记录</div>
+  <div id="review-list"></div>
+</div>
+
+<!-- ===== 每日灵感 ===== -->
+<div class="page" id="page-inspo">
+  <div class="page-header">
+    <h1>💡 每日灵感</h1>
+    <div class="sub">好记性不如烂笔头 · 灵感转瞬即逝</div>
+  </div>
+
+  <div class="card" style="background:linear-gradient(135deg,#eab308,#ca8a04);color:white">
+    <div style="font-size:14px;font-weight:700;margin-bottom:8px">🌟 今日灵感生成器</div>
+    <div id="auto-inspo" style="font-size:14px;line-height:1.8;opacity:0.95"></div>
+    <button onclick="genInspo()" style="margin-top:10px;background:rgba(255,255,255,0.2);color:white;border:none;border-radius:10px;padding:8px 16px;font-size:13px;font-weight:600;cursor:pointer;width:100%">🎲 换一个灵感</button>
+  </div>
+
+  <div class="card">
+    <div class="card-title">✍️ 记录灵感</div>
+    <div class="form-group">
+      <label>灵感分类</label>
+      <select id="inspo-cat">
+        <option value="英语">英语</option>
+        <option value="绘画">绘画</option>
+        <option value="书法">书法</option>
+        <option value="跨界">跨界创意</option>
+        <option value="其他">其他</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>灵感标题</label>
+      <input type="text" id="inspo-title" placeholder="一句话概括">
+    </div>
+    <div class="form-group">
+      <label>详细内容</label>
+      <textarea id="inspo-content" rows="3" placeholder="展开描述你的灵感..."></textarea>
+    </div>
+    <button class="btn-submit" style="background:linear-gradient(135deg,#eab308,#ca8a04)" onclick="addInspo()">记录灵感</button>
+  </div>
+
+  <div class="card-title" style="margin-bottom:10px">🗂️ 灵感库</div>
+  <div id="inspo-list"></div>
+</div>
+
+</div><!-- /main -->
+
+<!-- ===== Modal ===== -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <h3 id="modalTitle">编辑</h3>
+    <div id="modalBody"></div>
+    <div class="modal-btns">
+      <button class="btn-cancel" onclick="closeModal()">关闭</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const STORAGE_KEY = 'guaguaStudio_v1';
+const todayStr = () => {
+  const n = new Date();
+  return `${n.getFullYear()}-${String(n.getMonth()+1).padStart(2,'0')}-${String(n.getDate()).padStart(2,'0')}`;
+};
+
+function loadData() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) return JSON.parse(raw);
+  } catch(e) {}
+  return {
+    tasks: {
+      en: [
+        {id:1, name:'背单词30个（APP打卡）', done:false},
+        {id:2, name:'听力练习15分钟（BBC/VOA）', done:false},
+        {id:3, name:'口语跟读10分钟（影子跟读）', done:false},
+        {id:4, name:'阅读英文文章1篇', done:true},
+      ],
+      draw: [
+        {id:1, name:'Procreate临摹练习30分钟', done:false},
+        {id:2, name:'学习一个新笔刷用法', done:false},
+        {id:3, name:'完成一幅完整作品（每周）', done:false},
+      ],
+      'calli-thin': [
+        {id:1, name:'瘦金体基本笔画练习（横竖撇捺）', done:false},
+        {id:2, name:'瘦金体单字精练5个', done:false},
+        {id:3, name:'临摹宋徽宗帖30分钟', done:true},
+      ],
+    },
+    checkins: { en:[], draw:[] },
+    notes: {
+      en: [
+        {id:1, text:'艾宾浩斯遗忘曲线：1天→2天→4天→7天→15天→30天，科学复习'},
+        {id:2, text:'影子跟读法：播放原音→同步跟读→延迟1秒跟读，三遍法'},
+      ],
+      draw: [
+        {id:1, text:'Procreate图层混合模式：正片叠底适合阴影，滤色适合光效'},
+        {id:2, text:'颜色搭配：互补色制造冲击，类比色营造和谐'},
+      ],
+      calli: [
+        {id:1, text:'瘦金体特征：横画收笔带钩，竖画细长挺拔，撇捺如兰叶，铁画银钩'},
+        {id:2, text:'瘦金体钢笔写法：注重提按变化，起笔轻入，收笔出锋'},
+      ],
+    },
+    grammar: [
+      {id:1, topic:'一般现在时 vs 现在进行时', rule:'一般现在时表习惯/事实（I read every day）；现在进行时表当下正在做（I am reading now）。关键词：every/always/usually → 一般现在时；now/right now/look → 进行时', examples:'She works here. / She is working now.', date:'2026-07-27'},
+      {id:2, topic:'现在完成时 have/has + 过去分词', rule:'表示过去发生的动作对现在有影响，或持续到现在。常配 just/already/yet/ever/never/since/for', examples:'I have finished my homework. / She has lived here for 3 years.', date:'2026-07-26'},
+    ],
+    videos: {
+      calli: [
+        {id:1, title:'瘦金体基本笔画入门教程', link:'https://www.bilibili.com/video/example1', note:'B站热门教程，讲解横竖撇捺的起笔收笔，适合入门', date:'2026-07-27'},
+      ],
+    },
+    hot: [
+      {id:1, title:'零基础5分钟学会瘦金体"永"字', cat:'书法', likes:'12.5w', idea:'可改编为系列：瘦金体每日一字，钢笔版+毛笔版对比', link:'', date:'2026-07-27'},
+      {id:2, title:'Procreate新手必看的10个神仙笔刷', cat:'绘画', likes:'8.3w', idea:'改编为我自己的笔刷推荐+实测演示，加上使用场景', link:'', date:'2026-07-26'},
+    ],
+    reviews: [
+      {id:1, title:'瘦金体入门第一课：基本笔画', platform:'抖音', views:5600, likes:320, comments:45, shares:18,
+        good:'封面用了瘦金体实物图，吸引目标人群；开头直接展示成品，3秒钩子有效',
+        bad:'中间讲解部分节奏偏慢，BGM太小众不够抓耳',
+        tip:'下次加快讲解节奏，用热门BGM；每个笔画加慢动作特写；结尾加引导关注的话术',
+        ab:'A标题"瘦金体入门" vs B标题"3分钟学会瘦金体"，B播放量高40%',
+        date:'2026-07-26'},
+    ],
+    inspos: [
+      {id:1, cat:'跨界', title:'瘦金体×Procreate', content:'用Procreate模拟瘦金体笔触，做数字书法作品，结合传统与科技', date:'2026-07-27'},
+      {id:2, cat:'英语', title:'双语书法', content:'用瘦金体写英文句子（意译中文），做中英结合的书法内容', date:'2026-07-26'},
+    ],
+  };
+}
+
+let state = loadData();
+let currentTaskCat = 'en';
+
+const quotes = {
+  en: ['"The expert in anything was once a beginner." — 任何领域的专家都曾是新手',
+       '"Practice makes progress, not perfect." — 练习带来进步，而非完美',
+       '"Language is the road map of a culture." — 语言是文化的路线图'],
+  draw: ['"Every artist was first an amateur." — 每个艺术家都曾是业余爱好者',
+         '"Creativity takes courage." — 创造需要勇气 — Henri Matisse',
+         '"绘画不是画你看到的，而是画你知道的。" — 毕加索'],
+  calli: ['"字如其人，心正则笔正。" — 柳公权',
+          '"瘦金体：铁画银钩，飘逸出尘。"',
+          '"书法无他秘，只有用笔与结构耳。" — 包世臣'],
+};
+
+const inspoBank = [
+  '把今天学的英语单词，用瘦金体写出来，拍成视频',
+  '录一个Procreate绘画过程的延时视频，配上你写的书法',
+  '瘦金体写今日热门歌词/文案，蹭热点流量',
+  '英语口语教学 × 书法：用钢笔写英文，教大家读',
+  'Procreate模拟瘦金体笔触，数字书法+传统结合',
+  '今日穿搭+手持书法作品展示，生活化内容',
+  '录一个"我的一天"vlog：英语→绘画→书法',
+  '用Procreate设计瘦金体字体壁纸，免费分享引流',
+  '英语语法讲解 × 瘦金体：用书法写出语法例句',
+  'Procreate画一个书法笔画动态过程，视觉化教学',
+  '瘦金体写一句英文名言，中英双语排版',
+  '对比视频：钢笔瘦金体不同笔的书写效果',
+];
+
+function saveData() { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+
+// ===== Sidebar =====
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('show');
+  document.getElementById('sidebarOverlay').classList.toggle('show');
+}
+
+function switchPage(page, cls) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  const nav = document.querySelector(`.nav-item[data-page="${page}"]`);
+  if (nav) nav.classList.add('active');
+  // Close sidebar on mobile
+  if (window.innerWidth <= 768) {
+    document.getElementById('sidebar').classList.remove('show');
+    document.getElementById('sidebarOverlay').classList.remove('show');
+  }
+  // Scroll to top
+  document.getElementById('main').scrollTop = 0;
+}
+
+// ===== Date & Greeting =====
+function initQuotes() {
+  const today = todayStr();
+  const seed = new Date().getDate();
+  ['en','draw','calli'].forEach(k => {
+    const arr = quotes[k];
+    const q = arr[seed % arr.length];
+    const el = document.getElementById('quote-' + k);
+    if (el) el.textContent = q;
+    const el2 = document.getElementById('quote-' + k + '-date');
+    if (el2) el2.textContent = '📅 ' + today;
+  });
+}
+
+// ===== Tasks =====
+function renderTasks(cat) {
+  const container = document.getElementById('tasks-' + cat);
+  if (!container) return;
+  const tasks = state.tasks[cat] || [];
+  if (tasks.length === 0) {
+    container.innerHTML = '<div class="empty">暂无任务，添加一个吧～</div>';
+    return;
+  }
+  container.innerHTML = tasks.map(t => `
+    <div class="task-row">
+      <div class="task-check ${t.done?'checked':''}" onclick="toggleTask('${cat}',${t.id})">${t.done?'✓':''}</div>
+      <div class="task-info">
+        <div class="task-name ${t.done?'done':''}">${esc(t.name)}</div>
+      </div>
+      <span class="task-del" onclick="delTask('${cat}',${t.id})">✕</span>
+    </div>`).join('');
+}
+
+function toggleTask(cat, id) {
+  const t = state.tasks[cat].find(x => x.id === id);
+  if (!t) return;
+  t.done = !t.done;
+  saveData();
+  renderTasks(cat);
+}
+
+function delTask(cat, id) {
+  state.tasks[cat] = state.tasks[cat].filter(x => x.id !== id);
+  saveData();
+  renderTasks(cat);
+  showToast('已删除');
+}
+
+function addTask(cat) {
+  const inputId = 'add-' + cat + '-input';
+  const input = document.getElementById(inputId);
+  if (!input) return;
+  const name = input.value.trim();
+  if (!name) return;
+  const tasks = state.tasks[cat] || [];
+  const newId = tasks.length > 0 ? Math.max(...tasks.map(t=>t.id)) + 1 : 1;
+  tasks.push({ id: newId, name, done: false });
+  state.tasks[cat] = tasks;
+  saveData();
+  renderTasks(cat);
+  input.value = '';
+  showToast('已添加 ✓');
+}
+
+// ===== Notes =====
+function renderNotes(cat) {
+  const container = document.getElementById('notes-' + cat);
+  if (!container) return;
+  const notes = state.notes[cat] || [];
+  if (notes.length === 0) {
+    container.innerHTML = '<div class="empty" style="padding:20px">还没有笔记</div>';
+    return;
+  }
+  container.innerHTML = notes.map(n => `
+    <div class="task-row">
+      <div class="task-info">
+        <div class="task-note" style="font-size:13px;color:var(--text)">${esc(n.text)}</div>
+      </div>
+      <span class="task-del" onclick="delNote('${cat}',${n.id})">✕</span>
+    </div>`).join('');
+}
+
+function addNote(cat) {
+  const input = document.getElementById('note-' + cat + '-input');
+  if (!input) return;
+  const text = input.value.trim();
+  if (!text) return;
+  const notes = state.notes[cat] || [];
+  const newId = notes.length > 0 ? Math.max(...notes.map(n=>n.id)) + 1 : 1;
+  notes.push({ id: newId, text });
+  state.notes[cat] = notes;
+  saveData();
+  renderNotes(cat);
+  input.value = '';
+  showToast('笔记已保存 ✓');
+}
+
+function delNote(cat, id) {
+  state.notes[cat] = state.notes[cat].filter(n => n.id !== id);
+  saveData();
+  renderNotes(cat);
+}
+
+// ===== Grammar =====
+function renderGrammar() {
+  const container = document.getElementById('grammar-en');
+  if (!container) return;
+  const items = state.grammar || [];
+  if (items.length === 0) {
+    container.innerHTML = '<div class="empty" style="padding:20px">还没有语法记录</div>';
+    return;
+  }
+  const sorted = [...items].sort((a,b) => (b.date||'').localeCompare(a.date||''));
+  container.innerHTML = sorted.map(g => `
+    <div style="border:1.5px solid var(--blue-l);border-radius:12px;padding:12px;margin-bottom:10px;background:#f8faff">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px">
+        <div style="font-size:14px;font-weight:700;color:var(--blue-d)">📐 ${esc(g.topic)}</div>
+        <span class="hot-del" onclick="delGrammar(${g.id})">✕</span>
+      </div>
+      <div style="font-size:13px;color:var(--text);line-height:1.7;margin-bottom:6px">${esc(g.rule)}</div>
+      ${g.examples ? `<div style="font-size:12px;color:var(--gray-d);background:white;border-radius:8px;padding:6px 10px">📝 ${esc(g.examples)}</div>` : ''}
+      <div style="font-size:11px;color:#bbb;margin-top:4px">📅 ${esc(g.date||'')}</div>
+    </div>`).join('') + `
+    <div style="margin-top:10px">
+      <div class="form-group">
+        <input type="text" id="grammar-topic" placeholder="语法主题（如：定语从句）">
+      </div>
+      <div class="form-group">
+        <textarea id="grammar-rule" rows="2" placeholder="规则讲解..." style="width:100%;padding:10px 12px;border:1.5px solid #e5e7eb;border-radius:10px;font-size:14px;outline:none;font-family:inherit;resize:none"></textarea>
+      </div>
+      <div class="form-group">
+        <input type="text" id="grammar-examples" placeholder="例句（选填）">
+      </div>
+      <button class="btn-submit" style="background:linear-gradient(135deg,#3b82f6,#2563eb)" onclick="addGrammar()">+ 添加语法</button>
+    </div>`;
+}
+
+function addGrammar() {
+  const topic = document.getElementById('grammar-topic').value.trim();
+  const rule = document.getElementById('grammar-rule').value.trim();
+  if (!topic) { showToast('请输入语法主题'); return; }
+  if (!rule) { showToast('请输入规则讲解'); return; }
+  const examples = document.getElementById('grammar-examples').value.trim();
+  const items = state.grammar || [];
+  const newId = items.length > 0 ? Math.max(...items.map(g=>g.id)) + 1 : 1;
+  items.push({ id: newId, topic, rule, examples, date: todayStr() });
+  state.grammar = items;
+  saveData();
+  renderGrammar();
+  showToast('语法已添加 ✓');
+}
+
+function delGrammar(id) {
+  state.grammar = state.grammar.filter(g => g.id !== id);
+  saveData();
+  renderGrammar();
+  showToast('已删除');
+}
+
+// ===== Practice Videos =====
+function renderVideos(cat) {
+  const container = document.getElementById('videos-' + cat);
+  if (!container) return;
+  const items = (state.videos && state.videos[cat]) || [];
+  if (items.length === 0) {
+    container.innerHTML = '<div class="empty" style="padding:20px">还没有练习视频记录</div>';
+    return;
+  }
+  const sorted = [...items].sort((a,b) => (b.date||'').localeCompare(a.date||''));
+  container.innerHTML = sorted.map(v => `
+    <div style="border:1.5px solid var(--purple-l);border-radius:12px;padding:12px;margin-bottom:10px;background:#faf8ff">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px">
+        <div style="font-size:14px;font-weight:700;color:var(--purple-d)">📺 ${esc(v.title)}</div>
+        <span class="hot-del" onclick="delVideo('${cat}',${v.id})">✕</span>
+      </div>
+      ${v.note ? `<div style="font-size:13px;color:var(--text);line-height:1.7;margin-bottom:6px">${esc(v.note)}</div>` : ''}
+      ${v.link ? `<a href="${esc(v.link)}" target="_blank" style="font-size:12px;color:var(--purple);font-weight:600;text-decoration:none">▶️ 观看教程</a>` : ''}
+      <div style="font-size:11px;color:#bbb;margin-top:4px">📅 ${esc(v.date||'')}</div>
+    </div>`).join('');
+}
+
+function addVideo(cat) {
+  const title = document.getElementById('video-' + cat + '-title').value.trim();
+  if (!title) { showToast('请输入视频标题'); return; }
+  const link = document.getElementById('video-' + cat + '-link').value.trim();
+  const note = document.getElementById('video-' + cat + '-note').value.trim();
+  if (!state.videos) state.videos = {};
+  if (!state.videos[cat]) state.videos[cat] = [];
+  const items = state.videos[cat];
+  const newId = items.length > 0 ? Math.max(...items.map(v=>v.id)) + 1 : 1;
+  items.push({ id: newId, title, link, note, date: todayStr() });
+  saveData();
+  renderVideos(cat);
+  document.getElementById('video-' + cat + '-title').value = '';
+  document.getElementById('video-' + cat + '-link').value = '';
+  document.getElementById('video-' + cat + '-note').value = '';
+  showToast('教程已收录 ✓');
+}
+
+function delVideo(cat, id) {
+  state.videos[cat] = state.videos[cat].filter(v => v.id !== id);
+  saveData();
+  renderVideos(cat);
+  showToast('已删除');
+}
+
+// ===== Check-in =====
+function calcStreak(checks) {
+  if (!checks || checks.length === 0) return 0;
+  const today = todayStr();
+  const yd = (() => { const d=new Date(); d.setDate(d.getDate()-1); return fmtDate(d); })();
+  let anchor = today;
+  if (!checks.includes(today)) {
+    if (checks.includes(yd)) anchor = yd;
+    else return 0;
+  }
+  let streak = 0;
+  const d = new Date(anchor);
+  while (true) {
+    const ds = fmtDate(d);
+    if (checks.includes(ds)) { streak++; d.setDate(d.getDate()-1); }
+    else break;
+  }
+  return streak;
+}
+
+function fmtDate(d) {
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+
+function renderWeekCal(id) {
+  const el = document.getElementById('cal-' + id);
+  if (!el) return;
+  const checks = state.checkins[id] || [];
+  const today = todayStr();
+  const now = new Date();
+  const dayNames = ['日','一','二','三','四','五','六'];
+  let html = '';
+  for (let i = 6; i >= 0; i--) {
+    const d = new Date(now); d.setDate(d.getDate()-i);
+    const ds = fmtDate(d);
+    const isChecked = checks.includes(ds);
+    const isToday = ds === today;
+    const checkedCls = isChecked ? 'checked' : '';
+    const todayCls = isToday ? 'today' : '';
+    html += `<div class="week-day ${checkedCls} ${todayCls}">
+      <div class="wd-week">${dayNames[d.getDay()]}</div>
+      <div class="wd-num">${d.getDate()}</div>
+      <div class="wd-dot">${isChecked?'✓':(isToday?'·':'')}</div>
+    </div>`;
+  }
+  el.innerHTML = html;
+}
+
+function doCheckin(id) {
+  const today = todayStr();
+  const checks = state.checkins[id] || [];
+  if (checks.includes(today)) { showToast('今天已经打过卡啦～'); return; }
+  checks.push(today);
+  state.checkins[id] = checks;
+  saveData();
+  renderWeekCal(id);
+  updateStreakText(id);
+  // Update button
+  const btn = document.getElementById('checkin-' + id + '-btn');
+  if (btn) {
+    btn.textContent = '✓ 今日已打卡';
+    btn.style.opacity = '0.5';
+  }
+  showToast('打卡成功！💪');
+}
+
+function updateStreakText(id) {
+  const checks = state.checkins[id] || [];
+  const streak = calcStreak(checks);
+  const el = document.getElementById('streak-' + id + '-text');
+  if (el) el.textContent = '连续 ' + streak + ' 天';
+  // Update button state
+  const today = todayStr();
+  const btn = document.getElementById('checkin-' + id + '-btn');
+  if (btn) {
+    if (checks.includes(today)) {
+      btn.textContent = '✓ 今日已打卡';
+      btn.style.opacity = '0.5';
+    } else {
+      btn.style.opacity = '1';
+    }
+  }
+}
+
+// ===== Hot Videos =====
+function renderHot() {
+  const container = document.getElementById('hot-list');
+  const items = state.hot || [];
+  if (items.length === 0) {
+    container.innerHTML = '<div class="empty">暂无收录，去抖音找找爆款吧～</div>';
+    return;
+  }
+  const sorted = [...items].sort((a,b) => (b.date||'').localeCompare(a.date||''));
+  container.innerHTML = sorted.map(h => `
+    <div class="hot-card">
+      <div class="hot-top">
+        <div class="hot-title">${esc(h.title)}</div>
+        <span class="hot-tag">${esc(h.cat)}</span>
+      </div>
+      <div class="hot-data">
+        <span>❤️ ${esc(h.likes||'-')}</span>
+        <span>📅 ${esc(h.date||'')}</span>
+      </div>
+      <div class="hot-idea">💡 ${esc(h.idea||'暂无改编思路')}</div>
+      ${h.link ? `<a class="hot-link" href="${esc(h.link)}" target="_blank">🔗 查看原视频</a>` : ''}
+      <span class="hot-del" style="float:right" onclick="delHot(${h.id})">✕</span>
+    </div>`).join('');
+}
+
+function addHot() {
+  const title = document.getElementById('hot-title').value.trim();
+  if (!title) { showToast('请输入标题'); return; }
+  const cat = document.getElementById('hot-cat').value;
+  const likes = document.getElementById('hot-likes').value.trim();
+  const idea = document.getElementById('hot-idea').value.trim();
+  const link = document.getElementById('hot-link').value.trim();
+  const items = state.hot || [];
+  const newId = items.length > 0 ? Math.max(...items.map(x=>x.id)) + 1 : 1;
+  items.push({ id:newId, title, cat, likes, idea, link, date: todayStr() });
+  state.hot = items;
+  saveData();
+  renderHot();
+  document.getElementById('hot-title').value = '';
+  document.getElementById('hot-likes').value = '';
+  document.getElementById('hot-idea').value = '';
+  document.getElementById('hot-link').value = '';
+  showToast('已收录 ✓');
+}
+
+function delHot(id) {
+  state.hot = state.hot.filter(h => h.id !== id);
+  saveData();
+  renderHot();
+  showToast('已删除');
+}
+
+// ===== Reviews =====
+function renderReviews() {
+  const container = document.getElementById('review-list');
+  const items = state.reviews || [];
+  if (items.length === 0) {
+    container.innerHTML = '<div class="empty">暂无复盘，发布内容后记得回来记录哦～</div>';
+    return;
+  }
+  const sorted = [...items].sort((a,b) => (b.date||'').localeCompare(a.date||''));
+  container.innerHTML = sorted.map(r => `
+    <div class="review-card">
+      <div class="rv-header">
+        <div>
+          <div class="rv-title">${esc(r.title)}</div>
+          <div class="rv-date">📅 ${esc(r.date||'')}</div>
+        </div>
+        <span class="rv-platform">${esc(r.platform)}</span>
+      </div>
+      <div class="review-metrics">
+        <div class="metric-box"><div class="m-val">${r.views||0}</div><div class="m-label">播放</div></div>
+        <div class="metric-box"><div class="m-val">${r.likes||0}</div><div class="m-label">点赞</div></div>
+        <div class="metric-box"><div class="m-val">${r.comments||0}</div><div class="m-label">评论</div></div>
+        <div class="metric-box"><div class="m-val">${r.shares||0}</div><div class="m-label">转发</div></div>
+      </div>
+      ${r.good ? `<div class="review-section"><div class="rs-label">✅ 做得好</div><div class="rs-content good">${esc(r.good)}</div></div>`:''}
+      ${r.bad ? `<div class="review-section"><div class="rs-label">❌ 待改进</div><div class="rs-content bad">${esc(r.bad)}</div></div>`:''}
+      ${r.tip ? `<div class="review-section"><div class="rs-label">💡 优化建议</div><div class="rs-content tip">${esc(r.tip)}</div></div>`:''}
+      ${r.ab ? `<div class="review-section"><div class="rs-label">🅰️/🅱️ 对比</div><div class="rs-content ab">${esc(r.ab)}</div></div>`:''}
+      <div style="text-align:right;margin-top:8px"><span class="hot-del" onclick="delReview(${r.id})">✕ 删除</span></div>
+    </div>`).join('');
+}
+
+function addReview() {
+  const title = document.getElementById('rv-title').value.trim();
+  if (!title) { showToast('请输入标题'); return; }
+  const r = {
+    id: (state.reviews||[]).length > 0 ? Math.max(...state.reviews.map(x=>x.id))+1 : 1,
+    title,
+    platform: document.getElementById('rv-platform').value,
+    views: parseInt(document.getElementById('rv-views').value)||0,
+    likes: parseInt(document.getElementById('rv-likes').value)||0,
+    comments: parseInt(document.getElementById('rv-comments').value)||0,
+    shares: parseInt(document.getElementById('rv-shares').value)||0,
+    good: document.getElementById('rv-good').value.trim(),
+    bad: document.getElementById('rv-bad').value.trim(),
+    tip: document.getElementById('rv-tip').value.trim(),
+    ab: document.getElementById('rv-ab').value.trim(),
+    date: todayStr(),
+  };
+  state.reviews = state.reviews || [];
+  state.reviews.push(r);
+  saveData();
+  renderReviews();
+  ['rv-title','rv-views','rv-likes','rv-comments','rv-shares','rv-good','rv-bad','rv-tip','rv-ab'].forEach(id => document.getElementById(id).value='');
+  showToast('复盘已保存 ✓');
+}
+
+function delReview(id) {
+  state.reviews = state.reviews.filter(r => r.id !== id);
+  saveData();
+  renderReviews();
+  showToast('已删除');
+}
+
+// ===== Inspiration =====
+function renderInspos() {
+  const container = document.getElementById('inspo-list');
+  const items = state.inspos || [];
+  if (items.length === 0) {
+    container.innerHTML = '<div class="empty">灵感库还是空的，记录第一个吧～</div>';
+    return;
+  }
+  const sorted = [...items].sort((a,b) => (b.date||'').localeCompare(a.date||''));
+  const catColor = {'英语':'var(--blue-l);color:var(--blue-d)','绘画':'var(--orange-l);color:var(--orange-d)','书法':'#ede9fe;color:var(--purple-d)','跨界':'var(--pink-l);color:var(--pink-d)','其他':'var(--gray);color:var(--gray-d)'};
+  container.innerHTML = sorted.map(i => `
+    <div class="inspo-card">
+      <div class="ic-cat" style="background:${catColor[i.cat]||catColor['其他']}">${esc(i.cat)}</div>
+      <div class="ic-title">${esc(i.title)}</div>
+      <div class="ic-content">${esc(i.content)}</div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px">
+        <div class="ic-date">📅 ${esc(i.date||'')}</div>
+        <span class="hot-del" onclick="delInspo(${i.id})">✕</span>
+      </div>
+    </div>`).join('');
+}
+
+function addInspo() {
+  const title = document.getElementById('inspo-title').value.trim();
+  const content = document.getElementById('inspo-content').value.trim();
+  if (!title) { showToast('请输入标题'); return; }
+  if (!content) { showToast('请输入内容'); return; }
+  const cat = document.getElementById('inspo-cat').value;
+  const items = state.inspos || [];
+  const newId = items.length > 0 ? Math.max(...items.map(x=>x.id)) + 1 : 1;
+  items.push({ id:newId, cat, title, content, date: todayStr() });
+  state.inspos = items;
+  saveData();
+  renderInspos();
+  document.getElementById('inspo-title').value = '';
+  document.getElementById('inspo-content').value = '';
+  showToast('灵感已记录 ✓');
+}
+
+function delInspo(id) {
+  state.inspos = state.inspos.filter(i => i.id !== id);
+  saveData();
+  renderInspos();
+}
+
+function genInspo() {
+  const idx = Math.floor(Math.random() * inspoBank.length);
+  document.getElementById('auto-inspo').textContent = '✨ ' + inspoBank[idx];
+}
+
+// ===== Modal =====
+function closeModal() { document.getElementById('modalOverlay').classList.remove('show'); }
+
+// ===== Utils =====
+function esc(str) {
+  if (str == null) return '';
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 1800);
+}
+
+// ===== Init =====
+initQuotes();
+// Render all tasks
+['en','draw','calli-thin'].forEach(renderTasks);
+// Render all notes
+['en','draw','calli'].forEach(renderNotes);
+// Render week calendars
+['en','draw'].forEach(id => {
+  renderWeekCal(id);
+  updateStreakText(id);
+});
+// Render grammar, videos, hot, reviews, inspos
+renderGrammar();
+renderVideos('calli');
+renderHot();
+renderReviews();
+renderInspos();
+genInspo();
+</script>
+
+</body>
+</html>
