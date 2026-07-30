@@ -147,32 +147,43 @@
   .page-header { margin-bottom:16px; }
   .page-header h1 { font-size:22px; font-weight:800; display:flex; align-items:center; gap:8px; }
   .page-header .sub { font-size:13px; color:var(--gray-d); margin-top:4px; }
+  .page-header .header-icon { width:32px; height:32px; border-radius:50%; object-fit:cover; box-shadow:0 2px 8px rgba(99,102,241,0.2); }
 
   /* Sidebar */
   .sidebar {
-    width:200px; height:100vh; position:fixed; left:0; top:0;
-    background: linear-gradient(180deg, #1e1b4b 0%, #312e81 50%, #4c1d95 100%);
-    color:white; overflow-y:auto; z-index:200; flex-shrink:0;
+    width:210px; height:100vh; position:fixed; left:0; top:0;
+    background: linear-gradient(180deg, #f5f7ff 0%, #ebedfb 40%, #ede8fc 100%);
+    color:#4338ca; overflow-y:auto; z-index:200; flex-shrink:0;
+    border-right: 1px solid rgba(99,102,241,0.1);
+    box-shadow: 2px 0 20px rgba(99,102,241,0.08);
   }
-  .sidebar-header { padding:20px 16px 16px; text-align:center; border-bottom:1px solid rgba(255,255,255,0.1); }
+  .sidebar-header { padding:20px 16px 16px; text-align:center; border-bottom:1px solid rgba(99,102,241,0.15); }
   .sidebar-header .avatar {
-    width:56px; height:56px; border-radius:50%; margin:0 auto 8px;
-    background:white; overflow:hidden; border:3px solid rgba(255,255,255,0.5);
+    width:58px; height:58px; border-radius:50%; margin:0 auto 8px;
+    background:white; overflow:hidden; border:3px solid rgba(139,92,246,0.4);
+    box-shadow: 0 4px 12px rgba(99,102,241,0.15);
   }
   .sidebar-header .avatar img { width:100%; height:100%; object-fit:cover; }
-  .sidebar-header .name { font-size:16px; font-weight:700; }
-  .sidebar-header .desc { font-size:11px; opacity:0.6; margin-top:2px; }
+  .sidebar-header .name { font-size:16px; font-weight:700; color:#4338ca; }
+  .sidebar-header .desc { font-size:11px; opacity:0.6; margin-top:2px; color:#6366f1; }
   .nav-item {
-    display:flex; align-items:center; gap:10px;
-    padding:13px 18px; font-size:14px; font-weight:600;
-    color:rgba(255,255,255,0.65); cursor:pointer;
+    display:flex; align-items:center; gap:12px;
+    padding:12px 18px; font-size:14px; font-weight:600;
+    color:#6366f1; cursor:pointer;
     border-left:3px solid transparent; transition:all 0.2s;
   }
-  .nav-item .nav-icon { font-size:18px; width:24px; text-align:center; }
-  .nav-item.active { color:white; background:rgba(255,255,255,0.08); border-left-color:var(--yellow); }
+  .nav-item .nav-icon {
+    width:30px; height:30px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background:white; box-shadow:0 2px 6px rgba(99,102,241,0.15);
+    overflow:hidden; flex-shrink:0;
+  }
+  .nav-item .nav-icon img { width:100%; height:100%; object-fit:cover; }
+  .nav-item.active { color:#4338ca; background:rgba(255,255,255,0.8); border-left-color:#8b5cf6; font-weight:700; }
+  .nav-item.active .nav-icon { box-shadow:0 2px 10px rgba(139,92,246,0.4); }
   .menu-toggle {
     display:none; position:fixed; top:14px; left:14px; z-index:300;
-    background:rgba(30,27,75,0.9); color:white; border:none;
+    background:rgba(99,102,241,0.9); color:white; border:none;
     border-radius:10px; width:40px; height:40px; font-size:20px; cursor:pointer;
   }
   .sidebar-overlay { display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.4); z-index:150; }
@@ -380,32 +391,75 @@
     <div class="name">雅乖乖</div>
     <div class="desc">多领域内容创作者</div>
   </div>
-  <div class="nav-item active en" data-page="english" onclick="switchPage('english')">
-    <span class="nav-icon">🔤</span> 英语学习
+  <div class="nav-item active" data-page="reading" onclick="switchPage('reading')">
+    <span class="nav-icon"><img src="icon-reading.png" alt="阅读"></span> 阅读
   </div>
-  <div class="nav-item draw" data-page="drawing" onclick="switchPage('drawing')">
-    <span class="nav-icon">🎨</span> 绘画 Procreate
+  <div class="nav-item" data-page="english" onclick="switchPage('english')">
+    <span class="nav-icon"><img src="icon-en.png" alt="英语"></span> 英语学习
   </div>
-  <div class="nav-item calli" data-page="calligraphy" onclick="switchPage('calligraphy')">
-    <span class="nav-icon">✒️</span> 书法学习
+  <div class="nav-item" data-page="drawing" onclick="switchPage('drawing')">
+    <span class="nav-icon"><img src="icon-draw.png" alt="绘画"></span> 绘画 Procreate
   </div>
-  <div class="nav-item hot" data-page="hot" onclick="switchPage('hot')">
-    <span class="nav-icon">🔥</span> 抖音热点
+  <div class="nav-item" data-page="calligraphy" onclick="switchPage('calligraphy')">
+    <span class="nav-icon"><img src="icon-calli.png" alt="书法"></span> 书法学习
   </div>
-  <div class="nav-item review" data-page="review" onclick="switchPage('review')">
-    <span class="nav-icon">📊</span> 内容复盘
+  <div class="nav-item" data-page="hot" onclick="switchPage('hot')">
+    <span class="nav-icon"><img src="icon-hot.png" alt="热点"></span> 抖音热点
   </div>
-  <div class="nav-item inspo" data-page="inspo" onclick="switchPage('inspo')">
-    <span class="nav-icon">💡</span> 每日灵感
+  <div class="nav-item" data-page="review" onclick="switchPage('review')">
+    <span class="nav-icon"><img src="icon-review.png" alt="复盘"></span> 内容复盘
+  </div>
+  <div class="nav-item" data-page="inspo" onclick="switchPage('inspo')">
+    <span class="nav-icon"><img src="icon-inspo.png" alt="灵感"></span> 每日灵感
   </div>
 </div>
 
 <div class="main" id="main">
 
-<!-- ===== 英语学习 ===== -->
-<div class="page active" id="page-english">
+<!-- ===== 阅读 ===== -->
+<div class="page active" id="page-reading">
   <div class="page-header">
-    <h1>🔤 英语学习</h1>
+    <h1><img src="icon-reading.png" class="header-icon" alt="阅读"> 阅读时光</h1>
+    <div class="sub">在文字里找到重生的力量</div>
+  </div>
+
+  <div class="card" style="background:linear-gradient(135deg,#a78bfa,#7c3aed);color:white">
+    <div class="card-title" style="color:white">✨ 每日名言 <span style="font-size:11px;opacity:0.85;font-weight:400">励志·清醒·破碎重生</span></div>
+    <div id="reading-quote-text" style="font-size:16px;line-height:1.9;font-weight:500"></div>
+    <div id="reading-quote-source" style="font-size:13px;opacity:0.85;margin-top:10px;font-style:italic"></div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px">
+      <span style="font-size:11px;opacity:0.7">📅 <span id="reading-quote-date"></span></span>
+      <button onclick="refreshQuote()" style="background:rgba(255,255,255,0.25);color:white;border:none;border-radius:10px;padding:6px 14px;font-size:12px;font-weight:600;cursor:pointer">🎲 换一句</button>
+    </div>
+  </div>
+
+  <div class="card" style="border-left:4px solid #a78bfa">
+    <div class="card-title">📚 推荐书籍 <span style="font-size:11px;color:var(--gray-d);font-weight:400">心理学·哲学·美学</span></div>
+    <div id="reading-books"></div>
+    <div class="add-task-inline">
+      <input type="text" id="add-book-title" placeholder="书名" onkeydown="if(event.key==='Enter')addBook()">
+      <input type="text" id="add-book-author" placeholder="作者" onkeydown="if(event.key==='Enter')addBook()">
+      <button onclick="addBook()">+</button>
+    </div>
+    <div style="margin-top:10px">
+      <div class="form-group"><input type="text" id="add-book-note" placeholder="推荐理由（选填）"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">✍️ 读书笔记</div>
+    <div id="reading-notes"></div>
+    <div class="add-task-inline">
+      <input type="text" id="add-reading-note" placeholder="记录今日读书感悟..." onkeydown="if(event.key==='Enter')addReadingNote()">
+      <button onclick="addReadingNote()">+</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 英语学习 ===== -->
+<div class="page" id="page-english">
+  <div class="page-header">
+    <h1><img src="icon-en.png" class="header-icon" alt="英语"> 英语学习</h1>
     <div class="sub">每日积累，量变到质变</div>
   </div>
 
@@ -426,7 +480,7 @@
   </div>
 
   <div class="card">
-    <div class="card-title">📝 今日学习任务</div>
+    <div class="card-title">📝 今日学习任务 <span id="task-date-label-en" style="font-size:11px;color:var(--gray-d);font-weight:400"></span></div>
     <div id="tasks-en"></div>
     <div class="add-task-inline">
       <input type="text" id="add-en-input" placeholder="新增任务..." onkeydown="if(event.key==='Enter')addTask('en')">
@@ -451,7 +505,7 @@
 
 <!-- ===== 绘画 ===== -->
 <div class="page" id="page-drawing">
-  <div class="page-header"><h1>🎨 绘画 Procreate</h1><div class="sub">每日一画，持续精进</div></div>
+  <div class="page-header"><h1><img src="icon-draw.png" class="header-icon" alt="绘画"> 绘画 Procreate</h1><div class="sub">每日一画，持续精进</div></div>
 
   <div class="card" style="background:linear-gradient(135deg,#f97316,#ea580c);color:white">
     <div class="card-title" style="color:white">✨ 今日绘画灵感</div>
@@ -468,7 +522,7 @@
   </div>
 
   <div class="card">
-    <div class="card-title">🎨 绘画任务</div>
+    <div class="card-title">🎨 绘画任务 <span id="task-date-label-draw" style="font-size:11px;color:var(--gray-d);font-weight:400"></span></div>
     <div id="tasks-draw"></div>
     <div class="add-task-inline">
       <input type="text" id="add-draw-input" placeholder="新增任务..." onkeydown="if(event.key==='Enter')addTask('draw')">
@@ -488,7 +542,7 @@
 
 <!-- ===== 书法 ===== -->
 <div class="page" id="page-calligraphy">
-  <div class="page-header"><h1>✒️ 书法学习</h1><div class="sub">瘦金体钢笔专项 · 铁画银钩</div></div>
+  <div class="page-header"><h1><img src="icon-calli.png" class="header-icon" alt="书法"> 书法学习</h1><div class="sub">瘦金体钢笔专项 · 铁画银钩</div></div>
 
   <div class="card" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:white">
     <div class="card-title" style="color:white">✨ 今日瘦金体要诀</div>
@@ -526,7 +580,7 @@
 
 <!-- ===== 抖音热点 ===== -->
 <div class="page" id="page-hot">
-  <div class="page-header"><h1>🔥 抖音热点追踪</h1><div class="sub">自动获取热点 · 发现爆款灵感</div></div>
+  <div class="page-header"><h1><img src="icon-hot.png" class="header-icon" alt="热点"> 抖音热点追踪</h1><div class="sub">自动获取热点 · 发现爆款灵感</div></div>
 
   <div class="card" style="background:linear-gradient(135deg,#ec4899,#db2777);color:white">
     <div class="card-title" style="color:white">⚡ 自动获取的热点</div>
@@ -555,7 +609,7 @@
 
 <!-- ===== 内容复盘 ===== -->
 <div class="page" id="page-review">
-  <div class="page-header"><h1>📊 内容复盘</h1><div class="sub">数据追踪 → 要素拆解 → 优化建议</div></div>
+  <div class="page-header"><h1><img src="icon-review.png" class="header-icon" alt="复盘"> 内容复盘</h1><div class="sub">数据追踪 → 要素拆解 → 优化建议</div></div>
 
   <div class="card">
     <div class="card-title">📝 新增复盘记录</div>
@@ -582,7 +636,7 @@
 
 <!-- ===== 每日灵感 ===== -->
 <div class="page" id="page-inspo">
-  <div class="page-header"><h1>💡 每日灵感</h1><div class="sub">自动推荐 · 随时记录 · 灵感库</div></div>
+  <div class="page-header"><h1><img src="icon-inspo.png" class="header-icon" alt="灵感"> 每日灵感</h1><div class="sub">自动推荐 · 随时记录 · 灵感库</div></div>
 
   <div class="auto-inspo-box">
     <div class="auto-inspo-title">🌟 今日推荐灵感</div>
@@ -621,22 +675,24 @@ function loadData() {
   catch(e){}
   return {
     entered: false,
+    // 英语/绘画任务：按日期独立存储，每天一份全新任务
     tasks: {
-      en: [
+      en: { default: [
         {id:1, name:'背单词30个（APP打卡）', done:false},
         {id:2, name:'听力练习15分钟（BBC/VOA）', done:false},
         {id:3, name:'口语跟读10分钟（影子跟读）', done:false},
-        {id:4, name:'阅读英文文章1篇', done:true},
-      ],
-      draw: [
+        {id:4, name:'阅读英文文章1篇', done:false},
+      ]},
+      draw: { default: [
         {id:1, name:'Procreate临摹练习30分钟', done:false},
         {id:2, name:'学习一个新笔刷用法', done:false},
         {id:3, name:'完成一幅完整作品（每周）', done:false},
-      ],
+      ]},
+      // calli-thin 保持旧结构（无打卡，每日通用）
       'calli-thin': [
         {id:1, name:'瘦金体基本笔画练习（横竖撇捺）', done:false},
         {id:2, name:'瘦金体单字精练5个', done:false},
-        {id:3, name:'临摹宋徽宗帖30分钟', done:true},
+        {id:3, name:'临摹宋徽宗帖30分钟', done:false},
       ],
     },
     checkins: { en:[], draw:[] },
@@ -672,6 +728,15 @@ function loadData() {
     ],
     inspos: [
       {id:1, cat:'跨界', title:'瘦金体×Procreate', content:'用Procreate模拟瘦金体笔触，做数字书法作品', date:'2026-07-27'},
+    ],
+    // 阅读板块
+    books: [
+      {id:1, title:'被讨厌的勇气', author:'岸见一郎', note:'阿德勒心理学入门，关于自我接纳与他者贡献', date:'2026-07-27'},
+      {id:2, title:'悉达多', author:'赫尔曼·黑塞', note:'一首关于自我追寻与精神觉醒的印度诗篇', date:'2026-07-27'},
+      {id:3, title:'美的历程', author:'李泽厚', note:'中国美学经典，从远古图腾到明清文艺的美学巡礼', date:'2026-07-27'},
+    ],
+    readingNotes: [
+      {id:1, text:'真正的自由不是逃避，而是有勇气面对被讨厌的可能。', date:'2026-07-27'},
     ],
   };
 }
@@ -884,10 +949,26 @@ function addFallbackHot() {
 }
 
 // ===== Tasks =====
+// 英语/绘画任务按日期独立存储；calli-thin 保持旧结构（数组）
+function isDailyTask(cat){ return cat === 'en' || cat === 'draw'; }
+
+function getTodayTasks(cat){
+  if(!isDailyTask(cat)) return state.tasks[cat] || [];
+  const today = todayStr();
+  if(!state.tasks[cat]) state.tasks[cat] = {};
+  if(!state.tasks[cat][today]){
+    // 从 default 模板复制一份新任务
+    const tmpl = state.tasks[cat].default || [];
+    state.tasks[cat][today] = tmpl.map(t => ({id:t.id, name:t.name, done:false}));
+    saveData();
+  }
+  return state.tasks[cat][today];
+}
+
 function renderTasks(cat) {
   const container = document.getElementById('tasks-' + cat);
   if(!container) return;
-  const tasks = state.tasks[cat] || [];
+  const tasks = isDailyTask(cat) ? getTodayTasks(cat) : (state.tasks[cat] || []);
   if(tasks.length === 0){ container.innerHTML = '<div class="empty">暂无任务，添加一个吧～</div>'; return; }
   container.innerHTML = tasks.map(t => `
     <div class="task-row">
@@ -895,15 +976,26 @@ function renderTasks(cat) {
       <div class="task-info"><div class="task-name ${t.done?'done':''}">${esc(t.name)}</div></div>
       <span class="task-del" onclick="delTask('${cat}',${t.id})">✕</span>
     </div>`).join('');
+  // 日期独立模式：显示当前日期标签
+  if(isDailyTask(cat)){
+    const label = document.getElementById('task-date-label-' + cat);
+    if(label) label.textContent = '📅 ' + todayStr() + ' 的任务';
+  }
 }
 
 function toggleTask(cat,id){
-  const t = state.tasks[cat].find(x=>x.id===id); if(!t) return;
+  const tasks = isDailyTask(cat) ? getTodayTasks(cat) : (state.tasks[cat]||[]);
+  const t = tasks.find(x=>x.id===id); if(!t) return;
   t.done = !t.done; saveData(); renderTasks(cat);
 }
 
 function delTask(cat,id){
-  state.tasks[cat] = state.tasks[cat].filter(x=>x.id!==id);
+  if(isDailyTask(cat)){
+    const tasks = getTodayTasks(cat);
+    state.tasks[cat][todayStr()] = tasks.filter(x=>x.id!==id);
+  } else {
+    state.tasks[cat] = (state.tasks[cat]||[]).filter(x=>x.id!==id);
+  }
   saveData(); renderTasks(cat); showToast('已删除');
 }
 
@@ -911,9 +1003,15 @@ function addTask(cat){
   const input = document.getElementById('add-' + cat + '-input');
   if(!input) return;
   const name = input.value.trim(); if(!name) return;
-  const tasks = state.tasks[cat] || [];
-  const newId = tasks.length > 0 ? Math.max(...tasks.map(t=>t.id)) + 1 : 1;
-  tasks.push({id:newId,name,done:false}); state.tasks[cat] = tasks;
+  if(isDailyTask(cat)){
+    const tasks = getTodayTasks(cat);
+    const newId = tasks.length > 0 ? Math.max(...tasks.map(t=>t.id)) + 1 : 1;
+    tasks.push({id:newId,name,done:false});
+  } else {
+    const tasks = state.tasks[cat] || [];
+    const newId = tasks.length > 0 ? Math.max(...tasks.map(t=>t.id)) + 1 : 1;
+    tasks.push({id:newId,name,done:false}); state.tasks[cat] = tasks;
+  }
   saveData(); renderTasks(cat); input.value=''; showToast('已添加 ✓');
 }
 
@@ -1188,6 +1286,124 @@ function addInspo(){
 }
 function delInspo(id){ state.inspos = state.inspos.filter(i=>i.id!==id); saveData(); renderInspos(); showToast('已删除'); }
 
+// ===== Reading =====
+const readingQuotes = [
+  {text:'凡是不能毁灭我的，必将使我强大。', source:'尼采《偶像的黄昏》'},
+  {text:'你的孤独，虽败犹荣。', source:'刘同'},
+  {text:'我们一路奔跑，只为追上那个被自己寄予厚望的自己。', source:'《愿有人陪你颠沛流离》'},
+  {text:'人最宝贵的东西是生命，生命对于我们只有一次。', source:'奥斯特洛夫斯基《钢铁是怎样炼成的》'},
+  {text:'我从未长大，但我从未停止过生长。', source:'阿瑟·克拉克'},
+  {text:'当你穿过了暴风雨，你就不再是原来那个人了。', source:'村上春树《海边的卡夫卡》'},
+  {text:'世界上只有一种真正的英雄主义，那就是在认清生活真相之后依然热爱生活。', source:'罗曼·罗兰《米开朗基罗传》'},
+  {text:'如果你不出去走走，你会以为这就是世界。', source:'《天堂电影院》'},
+  {text:'所有的光鲜亮丽，都需要付出代价。', source:'菲茨杰拉德《了不起的盖茨比》'},
+  {text:'人不是为失败而生的，一个人可以被毁灭，但不能给打败。', source:'海明威《老人与海》'},
+  {text:'活着本身就是一种修行。', source:'余华《活着》'},
+  {text:'我们会在最深的绝望里，遇见最美丽的风景。', source:'几米'},
+  {text:'每一个不曾起舞的日子，都是对生命的辜负。', source:'尼采'},
+  {text:'万物皆有裂痕，那是光照进来的地方。', source:'莱昂纳德·科恩'},
+  {text:'不要温和地走进那个良夜。', source:'狄兰·托马斯'},
+  {text:'人生如逆旅，我亦是行人。', source:'苏轼《临江仙》'},
+  {text:'那些杀不死你的，终将使你更强大。', source:'尼采'},
+  {text:'我命由我不由天。', source:'《哪吒之魔童降世》'},
+  {text:'希望是本无所谓有，无所谓无的。这正如地上的路；其实地上本没有路，走的人多了，也便成了路。', source:'鲁迅《故乡》'},
+  {text:'愿你历尽千帆，归来仍是少年。', source:'苏轼'},
+];
+
+function getReadingQuote(){
+  // 按日期取，同一天显示同一句
+  const dayOfYear = (() => {
+    const now = new Date();
+    const start = new Date(now.getFullYear(), 0, 0);
+    return Math.floor((now - start) / 86400000);
+  })();
+  return readingQuotes[dayOfYear % readingQuotes.length];
+}
+
+function initReadingQuote(){
+  const q = getReadingQuote();
+  document.getElementById('reading-quote-text').textContent = '"' + q.text + '"';
+  document.getElementById('reading-quote-source').textContent = '— ' + q.source;
+  document.getElementById('reading-quote-date').textContent = todayStr();
+}
+
+function refreshQuote(){
+  // 随机换一句（不按日期）
+  const q = readingQuotes[Math.floor(Math.random() * readingQuotes.length)];
+  document.getElementById('reading-quote-text').textContent = '"' + q.text + '"';
+  document.getElementById('reading-quote-source').textContent = '— ' + q.source;
+  showToast('已换一句 ✨');
+}
+
+function renderBooks(){
+  const container = document.getElementById('reading-books');
+  if(!container) return;
+  const items = state.books || [];
+  if(items.length === 0){ container.innerHTML = '<div class="empty" style="padding:20px">还没有推荐书籍</div>'; return; }
+  const sorted = [...items].sort((a,b)=>(b.date||'').localeCompare(a.date||''));
+  container.innerHTML = sorted.map(b => `
+    <div class="grammar-card" style="border-left:3px solid #a78bfa">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px">
+        <div class="g-title">📕 ${esc(b.title)}</div>
+        <span class="hot-del" onclick="delBook(${b.id})">✕</span>
+      </div>
+      ${b.author ? `<div style="font-size:12px;color:var(--gray-d);margin-bottom:4px">✍️ ${esc(b.author)}</div>` : ''}
+      ${b.note ? `<div class="g-rule">${esc(b.note)}</div>` : ''}
+      <div style="font-size:11px;color:#bbb;margin-top:4px">📅 ${esc(b.date||'')}</div>
+    </div>`).join('');
+}
+
+function addBook(){
+  const title = document.getElementById('add-book-title').value.trim();
+  if(!title){ showToast('请输入书名'); return; }
+  const author = document.getElementById('add-book-author').value.trim();
+  const note = document.getElementById('add-book-note').value.trim();
+  const items = state.books || [];
+  const newId = items.length > 0 ? Math.max(...items.map(b=>b.id)) + 1 : 1;
+  items.push({id:newId, title, author, note, date:todayStr()});
+  state.books = items; saveData(); renderBooks();
+  document.getElementById('add-book-title').value = '';
+  document.getElementById('add-book-author').value = '';
+  document.getElementById('add-book-note').value = '';
+  showToast('书籍已添加 📚');
+}
+
+function delBook(id){
+  state.books = (state.books||[]).filter(b=>b.id!==id);
+  saveData(); renderBooks(); showToast('已删除');
+}
+
+function renderReadingNotes(){
+  const container = document.getElementById('reading-notes');
+  if(!container) return;
+  const items = state.readingNotes || [];
+  if(items.length === 0){ container.innerHTML = '<div class="empty" style="padding:20px">还没有读书笔记</div>'; return; }
+  const sorted = [...items].sort((a,b)=>(b.date||'').localeCompare(a.date||''));
+  container.innerHTML = sorted.map(n => `
+    <div class="task-row">
+      <div class="task-info">
+        <div class="task-note" style="font-size:13px;color:var(--text)">${esc(n.text)}</div>
+        <div style="font-size:11px;color:#bbb;margin-top:2px">📅 ${esc(n.date||'')}</div>
+      </div>
+      <span class="task-del" onclick="delReadingNote(${n.id})">✕</span>
+    </div>`).join('');
+}
+
+function addReadingNote(){
+  const input = document.getElementById('add-reading-note'); if(!input) return;
+  const text = input.value.trim(); if(!text) return;
+  const items = state.readingNotes || [];
+  const newId = items.length > 0 ? Math.max(...items.map(n=>n.id)) + 1 : 1;
+  items.push({id:newId, text, date:todayStr()});
+  state.readingNotes = items;
+  saveData(); renderReadingNotes(); input.value=''; showToast('笔记已记录 ✍️');
+}
+
+function delReadingNote(id){
+  state.readingNotes = (state.readingNotes||[]).filter(n=>n.id!==id);
+  saveData(); renderReadingNotes(); showToast('已删除');
+}
+
 // ===== Utils =====
 function esc(str){ if(str==null)return''; return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 function showToast(msg){
@@ -1198,6 +1414,7 @@ function showToast(msg){
 // ===== Init =====
 initSplash();
 initAutoContent();
+initReadingQuote();
 ['en','draw','calli-thin'].forEach(renderTasks);
 ['en','draw','calli'].forEach(renderNotes);
 ['en','draw'].forEach(id=>{ renderWeekCal(id); updateStreak(id); });
@@ -1206,6 +1423,8 @@ renderVideos('calli');
 renderHot();
 renderReviews();
 renderInspos();
+renderBooks();
+renderReadingNotes();
 </script>
 
 </body>
